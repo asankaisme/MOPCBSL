@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-header">
                         Create - Gatepass
-
                     </div>
                     <div class="card-body">
-                        <form action="" method="POST">
+                        <form action="{{ route('gatepasses.store') }}" method="POST">
+                            @method('POST')
                             @csrf
                             <div class="row">
                                 <div class="col-md-10 form-group">
@@ -29,7 +29,7 @@
                             <div class="row">
                                 <div class="col form-group">
                                     <label for="">Name of the person</label>
-                                    <input type="text" class="form-control form-control-sm" name="companyName" required>
+                                    <input type="text" class="form-control form-control-sm" name="personName" required>
                                 </div>
                                 <div class="col form-group">
                                     <label for="">NIC No / Bank ID</label>
@@ -62,6 +62,18 @@
             </div>
             <div class="col-md-12" style="margin-top: 10px;">
                 @include('includes.message')
+            </div>
+
+            <div class="col-md-12" style="margin-top: 10px;">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             </div>
         </div>
     </div>
