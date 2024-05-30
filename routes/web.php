@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\GatepassController;
+use App\Http\Controllers\GatepassItemController;
+use App\Models\GatepassItem;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,4 +28,9 @@ Route::middleware(['auth'])->group(function(){
     Route::resources([
         'gatepasses' => GatepassController::class,
     ]);
+
+    Route::get('/gatepasses/{gatepass}', [GatepassController::class, 'addItemsToGatepass'])->name('gatepasses.addItemsToGatepass');
+
+    Route::post('/gatepassItems/addGatepassItems/{gatepass}', [GatepassItemController::class, 'addGatepassItems'])->name('addGatepassItems');
+    Route::get('/gatepassItems/deleteGatepassItem/{gatepassItem}', [GatepassItemController::class, 'deleteGatepassItem'])->name('deleteGatepassItem');
 });

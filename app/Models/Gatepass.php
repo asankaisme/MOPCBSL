@@ -31,7 +31,7 @@ class Gatepass extends Model
         return $this->belongsTo(User::class, 'authBy');
     }
 
-    public function item(){
+    public function gatepassItem(){
         return $this->hasMany(GatepassItem::class);
     }
 }

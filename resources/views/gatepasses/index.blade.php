@@ -25,6 +25,7 @@
                                 <th>Person</th>
                                 <th>Created By</th>
                                 <th>Created Date</th>
+                                <th>Auth By</th>
                                 <th>Status</th>
                                 <th></th>
                             </thead>
@@ -34,10 +35,20 @@
                                         <td>{{ $gatepass->serialNo }}</td>
                                         <td>{{ $gatepass->companyName }}</td>
                                         <td>{{ $gatepass->personName }}</td>
-                                        <td>{{ $gatepass->createdBy }}</td>
+                                        <td>{{ $gatepass->userCreated->name }}</td>
                                         <td>{{ $gatepass->createdDate }}</td>
-                                        <td>{{ $gatepass->status }}</td>
-                                        <td></td>
+                                        <td>{{ $gatepass->authBy }}</td>
+                                        <td>
+                                            @if ($gatepass->status == 'NEW')
+                                                <span class="badge badge-primary">{{ $gatepass->status }}</span></td>
+                                            @else
+                                                
+                                            @endif
+                                            
+                                        <td>
+                                            <a href="{{ route('gatepasses.addItemsToGatepass', $gatepass->id) }}" title="Add Items"><i class="fa fa-plus" aria-hidden="true" style="color:black;"></i></a>
+                                            <a href="{{ route('gatepasses.addItemsToGatepass', $gatepass->id) }}" title="Approve"><i class="fa fa-check-circle" aria-hidden="true" style="color:green;"></i></a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -10,7 +10,7 @@ class GatepassItem extends Model
     use HasFactory;
 
     public $fillable = [
-        'gatepass_id',
+        'gatepass_id', //This should be the gatepass id (FK)
         'itemName',
         'serialNo',
         'faNo',

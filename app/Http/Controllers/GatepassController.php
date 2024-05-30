@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\GatepassReason;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use DateTime;
 use Illuminate\Support\Facades\Auth;
 
 class GatepassController extends Controller
@@ -43,29 +44,39 @@ class GatepassController extends Controller
             'personName' => 'required',
             'personNIC' => 'required',
             'validityDate' => 'required',
+            'reason' => 'required',
         ]);
-        //dd($request);
+        //dd($validatedData);
         try {
-            $lastID = Gatepass::latest()->first();
-            //$serialNo = Carbon::today()->format("ymd").str_pad($lastID + 1, 2, "0", STR_PAD_LEFT);
-            //dd($serialNo);
-            //dd(Carbon::today()->format("ymd").str_pad($lastID + 1, 3, "0", STR_PAD_LEFT));
-            //dd(str_pad($lastID + 1, 3, "0", STR_PAD_LEFT));
-            //dd(Carbon::today()->format("ymd"));
-            //$curdate = Carbon::today();
+            $lastID = Gatepass::max('id') ?? 0;
             $gatepass = new Gatepass();
-            $gatepass->serialNo = Carbon::today()->format("ymd").str_pad($lastID + 1, 2, "0", STR_PAD_LEFT);
+            // $gatepass->serialNo = Carbon::today()->format("ymd").str_pad($lastID + 1, 4, "0", STR_PAD_LEFT);
+            $gatepass->serialNo = Carbon::today()->format("ymd") . mt_rand(1000, 9999);
+            //$gatepass->fill($validatedData);
             $gatepass->companyName = $validatedData['companyName'];
             $gatepass->personName = $validatedData['personName'];
             $gatepass->personNIC = $validatedData['personNIC'];
             $gatepass->validityDate = $validatedData['validityDate'];
             $gatepass->reason = $validatedData['reason'];
-            $gatepass->createdBy = Auth::user()->name;
+            $gatepass->createdBy = Auth::user()->id;
+            $gatepass->createdDate = Carbon::today()->format('Y-m-d');
+            $gatepass->status = "NEW";
             $gatepass->save();
-            return redirect()->route('gatepasses.index')->with('msgSuccess', 'Gatepass header created.');
-
+            return redirect()->route('gatepasses.addItemsToGatepass', $gatepass->id)->with('msgSuccess', 'Gatepass header created.');
         } catch (\Throwable $th) {
             //throw $th;
+            echo $th->getMessage();
+            //return redirect()->back()->withInput()->withErrors(['error' => 'An error occurred while creating the gatepass.']);
+        }
+    }
+
+    //method for adding itms to the gatepass
+    public function addItemsToGatepass(Gatepass $gatepass)
+    {
+        try {
+            return view('gatepasses.add-items-gp', compact('gatepass'));
+        } catch (\Throwable $th) {
+            throw $th;
         }
     }
 
