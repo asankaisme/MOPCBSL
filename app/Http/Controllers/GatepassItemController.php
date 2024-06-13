@@ -34,9 +34,8 @@ class GatepassItemController extends Controller
     public function deleteGatepassItem(GatepassItem $gatepassItem )
     {
         try {
-            dd($gatepassItem->gatepass->id);
             $gatepassItem->delete();
-            redirect()->route('gatepasses.addItemsToGatepass', $gatepassItem->gatepass->id);
+            return redirect()->route('gatepasses.addItemsToGatepass', $gatepassItem->gatepass->id);
         } catch (\Throwable $th) {
             throw $th;
         }

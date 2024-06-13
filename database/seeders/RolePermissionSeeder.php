@@ -76,7 +76,7 @@ class RolePermissionSeeder extends Seeder
             'edit_gatepass',
             'delete_gatepass',
             'verify_gatepass',
-            'approve_gatepass',
+            // 'approve_gatepass',
             'view_requestMenu',
             'view_visitorPermission',
             'add_visitorPermission',
@@ -93,6 +93,26 @@ class RolePermissionSeeder extends Seeder
 
         foreach($adminOfficerPermissions as $permission){
             $adminOfficerRole->givePermissionTo($permission);
+        }
+
+        $approveUserRole = Role::create(['name' => 'Approving_Officer']);
+
+        $approveUserPermissions = [
+            'view_letters',
+            'view_assets',
+            'view_requestMenu',
+            'view_gatepass',
+            'approve_gatepass',
+            'view_visitorPermission',
+            'approve_visitorPermission',
+            'view_repairLog',
+            'approve_repairLog',
+            'view_masterdata',
+        ];
+
+        foreach($approveUserPermissions as $permission)
+        {
+            $approveUserRole->givePermissionTo($permission);
         }
 
         $helpdeskOfficerRole = Role::create(['name' => 'Helpdesk_Officer']);

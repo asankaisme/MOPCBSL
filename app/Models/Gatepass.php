@@ -18,6 +18,8 @@ class Gatepass extends Model
         'reason',
         'createdBy',
         'createdDate',
+        'verifiedBy',
+        'verifiedDate',
         'authBy',
         'authDate',
         'status',
@@ -29,6 +31,10 @@ class Gatepass extends Model
 
     public function userAuth(){
         return $this->belongsTo(User::class, 'authBy');
+    }
+
+    public function userVerified(){
+        return $this->belongsTo(User::class, 'verifiedBy');
     }
 
     public function gatepassItem(){

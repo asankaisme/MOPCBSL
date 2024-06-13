@@ -63,10 +63,10 @@
                                 </a>
                                 @can('view_visitorPermission')
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        @can('add_gatepass')
-                                            <a class="dropdown-item" href="{{ route('gatepasses.index') }}">Gate Pass</a>
+                                        @can('view_gatepass')
+                                            <a class="dropdown-item" href="{{ route('gatepasses.index') }}">Gatepass</a>
                                         @endcan
-                                        @can('add_visitorPermission')
+                                        @can('view_visitorPermission')
                                             <a class="dropdown-item" href="#">Visitor Permission</a>
                                         @endcan
 
@@ -95,7 +95,7 @@
                         <li class="nav-item dropdown float-right">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Hi! {{ Auth::user()->name }}
+                                Hi, {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Profile Settings</a>

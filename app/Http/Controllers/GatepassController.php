@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Stmt\TryCatch;
 
 class GatepassController extends Controller
 {
@@ -80,12 +81,61 @@ class GatepassController extends Controller
         }
     }
 
+    // method for verifying gatepasses
+    public function viewGatepassToVerify(Gatepass $gatepass)
+    {
+        try {
+            return view('gatepasses.verify-gatepass', compact('gatepass'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    // method for verifying gatepasses
+    public function verifyGatepass(Gatepass $gatepass)
+    {
+        try {
+            //dd($gatepass->id);
+            $gatepass->verifiedBy = Auth::user()->id;
+            $gatepass->verifiedDate = Carbon::now()->format("Y-m-d");
+            $gatepass->status = 'VRF';
+            $gatepass->save();
+            return redirect()->route('gatepasses.index')->with('msgSuccess', 'Gatepass is verified.');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    // method for approve gatepasses
+    public function viewGatepassToApprove(Gatepass $gatepass)
+    {
+        try {
+            return view('gatepasses.approve-gatepass', compact('gatepass'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    // method for verifying gatepasses
+    public function approveGatepass(Gatepass $gatepass)
+    {
+        try {
+            $gatepass->authBy = Auth::user()->id;
+            $gatepass->authDate = Carbon::now()->format("Y-m-d");
+            $gatepass->status = 'APR';
+            $gatepass->save();
+            return redirect()->route('gatepasses.index')->with('msgSuccess', 'Gatepass is approved.');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
     /**
      * Display the specified resource.
      */
     public function show(Gatepass $gatepass)
     {
-        //
+        //show gatepass details
+        return view('gatepasses.view-gatepass', compact('gatepass'));
     }
 
     /**

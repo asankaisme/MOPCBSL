@@ -15,20 +15,20 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::factory()->create([
-            'name' => 'ADMuser',
-            'email' => 'admuser@cbsl.lk',
+            'name' => 'itadminuser',
+            'email' => 'itadmin@cbsl.lk',
             'password' => Hash::make('asanka123'),
         ])->assignRole('Admin_Officer');
 
         User::factory()->create([
-            'name' => 'HDKuser',
-            'email' => 'helpuser@cbsl.lk',
+            'name' => 'helpdeskuser',
+            'email' => 'helpdesk@cbsl.lk',
             'password' => Hash::make('asanka123'),
         ])->assignRole('Helpdesk_Officer');
 
         User::factory()->create([
-            'name' => 'TECuser',
-            'email' => 'tecuser@cbsl.lk',
+            'name' => 'tecuser',
+            'email' => 'tec@cbsl.lk',
             'password' => Hash::make('asanka123'),
         ])->assignRole('Technical_Officer');
 
@@ -37,6 +37,12 @@ class UserSeeder extends Seeder
             'email' => 'guest@cbsl.lk',
             'password' => Hash::make('asanka123'),
         ])->assignRole('Guest');
+
+        User::factory()->create([
+            'name' => 'apruser',
+            'email' => 'approve@cbsl.lk',
+            'password' => Hash::make('asanka123'),
+        ])->assignRole('Approving_Officer');
 
         User::factory()->create([
             'name' => 'SuperAdminUser',

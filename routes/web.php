@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GatepassController;
 use App\Http\Controllers\GatepassItemController;
 use App\Models\GatepassItem;
@@ -21,14 +22,17 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('/home', function () {
-        return view('home');
-    })->name('home');
+    Route::get('/home', [DashboardController::class, 'displayDashboardInfo'])->name('home');
 
     Route::resources([
         'gatepasses' => GatepassController::class,
     ]);
 
+    Route::get('/gatepasses/{gatepass}/show', [GatepassController::class, 'show'])->name('gatepasses.show');
+    Route::get('/gatepasses/{gatepass}/verify', [GatepassController::class, 'viewGatepassToVerify'])->name('gatepasses.verify');
+    Route::get('/gatepasses/{gatepass}/verifygp', [GatepassController::class, 'verifyGatepass'])->name('gatepasses.verifyGatepass');
+    Route::get('/gatepasses/{gatepass}/approve', [GatepassController::class, 'viewGatepassToApprove'])->name('gatepasses.approve');
+    Route::get('/gatepasses/{gatepass}/approvegp', [GatepassController::class, 'approveGatepass'])->name('gatepasses.approveGatepass');
     Route::get('/gatepasses/{gatepass}', [GatepassController::class, 'addItemsToGatepass'])->name('gatepasses.addItemsToGatepass');
 
     Route::post('/gatepassItems/addGatepassItems/{gatepass}', [GatepassItemController::class, 'addGatepassItems'])->name('addGatepassItems');
