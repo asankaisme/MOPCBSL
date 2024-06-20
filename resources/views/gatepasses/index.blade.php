@@ -84,6 +84,11 @@
                                                     title="Add Items"><i class="fa fa-plus" aria-hidden="true"
                                                         style="color:black;"></i></a>
                                             @endcan
+                                            @can('delete_gatepass')
+                                            <a href="{{ route('gatepasses.viewBeforeDestroy', $gatepass->id) }}"
+                                                title="Delete"><i class="fa fa-trash" aria-hidden="true"
+                                                    style="color:rgb(250, 80, 80);"></i></a>
+                                            @endcan
                                         @endif
                                     @endif
                                 </td>

@@ -14,26 +14,27 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-2 form-group">
+                            <div class="col-md-3 form-group">
                                 <label for="">Serial No</label>
                                 <input type="text" class="form-control form-control-sm" name="companyName" required
                                     value="#{{ $gatepass->serialNo }}" readonly>
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 <label for="">Created By</label>
                                 <input type="text" class="form-control form-control-sm" name="createdBy" required
                                     value="{{ $gatepass->userCreated->name }}" readonly>
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
+                                <label for="">Authorized By</label>
+                                <input type="text" class="form-control form-control-sm" name="authBy" required
+                                    value="{{ $gatepass->userVerified->name ?? '-' }}" readonly>
+                            </div>
+                            <div class="col-md-3 form-group">
                                 <label for="">Authorized By</label>
                                 <input type="text" class="form-control form-control-sm" name="authBy" required
                                     value="{{ $gatepass->userAuth->name ?? '-' }}" readonly>
                             </div>
-                            <div class="col-md-2 form-group">
-                                <label for="">Valid Until</label>
-                                <input type="date" class="form-control form-control-sm" name="validityDate" required
-                                    value="{{ $gatepass->validityDate }}" readonly>
-                            </div>
+                            
                         </div>
                         <div class="row">
                             <div class="col-md-4 form-group">
@@ -46,10 +47,15 @@
                                 <input type="text" class="form-control form-control-sm" name="companyName" required
                                     value="{{ $gatepass->companyName }}" readonly>
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-2 form-group">
                                 <label for="">NIC No / Bank ID</label>
                                 <input type="text" class="form-control form-control-sm" name="personNIC" maxlength="12"
                                     required value="{{ $gatepass->personNIC }}" readonly>
+                            </div>
+                            <div class="col-md-2 form-group">
+                                <label for="">Valid Until</label>
+                                <input type="date" class="form-control form-control-sm" name="validityDate" required
+                                    value="{{ $gatepass->validityDate }}" readonly>
                             </div>
                         </div>
                         {{-- <hr style="border-color: rgb(202, 195, 250)"> --}}

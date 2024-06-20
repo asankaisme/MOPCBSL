@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GatepassController;
 use App\Http\Controllers\GatepassItemController;
+use App\Http\Controllers\MailController;
 use App\Models\GatepassItem;
 use Illuminate\Support\Facades\Route;
 
@@ -34,7 +35,14 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/gatepasses/{gatepass}/approve', [GatepassController::class, 'viewGatepassToApprove'])->name('gatepasses.approve');
     Route::get('/gatepasses/{gatepass}/approvegp', [GatepassController::class, 'approveGatepass'])->name('gatepasses.approveGatepass');
     Route::get('/gatepasses/{gatepass}', [GatepassController::class, 'addItemsToGatepass'])->name('gatepasses.addItemsToGatepass');
+    Route::get('/gatepasses/{gatepass}/viewBeforeDestroy', [GatepassController::class, 'viewBeforeDestroy'])->name('gatepasses.viewBeforeDestroy');
+    Route::get('/gatepasses/{gatepass}/destroy', [GatepassController::class, 'destroy'])->name('gatepasses.destroy');
+
 
     Route::post('/gatepassItems/addGatepassItems/{gatepass}', [GatepassItemController::class, 'addGatepassItems'])->name('addGatepassItems');
     Route::get('/gatepassItems/deleteGatepassItem/{gatepassItem}', [GatepassItemController::class, 'deleteGatepassItem'])->name('deleteGatepassItem');
+
+    // sending mails
+    Route::get('/sendMail', [MailController::class, 'sendMail'])->name('sendMail');
+
 });

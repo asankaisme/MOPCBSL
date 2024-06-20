@@ -11,9 +11,14 @@ class DashboardController extends Controller
     public function displayDashboardInfo()
     {
         $gatepassesNew = Gatepass::where('status', 'NEW')->get();
+        $gatepassesVerified = Gatepass::where('status', 'VRF')->get();
+        $gatepassesApproved = Gatepass::where('status', 'APR')->get();
+        // dd($gatepassesApproved);
         //dd($gatepassesNew);
         return view('home', compact(
             'gatepassesNew',
+            'gatepassesVerified',
+            'gatepassesApproved',
         ));
     }
 }

@@ -15,7 +15,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-3 form-group">
-                                <label for="">SN#</label>
+                                <label for="">Serial No</label>
                                 <input type="text" class="form-control form-control-sm" name="companyName" required
                                     value="#{{ $gatepass->serialNo }}" readonly>
                             </div>
@@ -25,7 +25,7 @@
                                     value="{{ $gatepass->userCreated->name }}" readonly>
                             </div>
                             <div class="col-md-3 form-group">
-                                <label for="">Verified By</label>
+                                <label for="">Authorized By</label>
                                 <input type="text" class="form-control form-control-sm" name="authBy" required
                                     value="{{ $gatepass->userVerified->name ?? '-' }}" readonly>
                             </div>
@@ -42,12 +42,12 @@
                                 <input type="text" class="form-control form-control-sm" name="personName" required
                                     value="{{ $gatepass->personName }}" readonly>
                             </div>
-                            <div class="col-md-3 form-group">
+                            <div class="col-md-4 form-group">
                                 <label for="">Company Name / Department</label>
                                 <input type="text" class="form-control form-control-sm" name="companyName" required
                                     value="{{ $gatepass->companyName }}" readonly>
                             </div>
-                            <div class="col-md-3 form-group">
+                            <div class="col-md-2 form-group">
                                 <label for="">NIC No / Bank ID</label>
                                 <input type="text" class="form-control form-control-sm" name="personNIC" maxlength="12"
                                     required value="{{ $gatepass->personNIC }}" readonly>

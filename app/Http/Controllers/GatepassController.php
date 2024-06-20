@@ -157,8 +157,22 @@ class GatepassController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    public function viewBeforeDestroy(Gatepass $gatepass)
+    {
+        return view('gatepasses.delete-gatepass', compact('gatepass'));
+    }
+
     public function destroy(Gatepass $gatepass)
     {
-        //
+        try {
+            foreach ($gatepass->gatepassItem as $gp) 
+            {
+                $gp->delete();
+            }
+            $gatepass->delete();
+            return redirect()->route('gatepasses.index')->with('msgSuccess', 'Gatepass is deleted!');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

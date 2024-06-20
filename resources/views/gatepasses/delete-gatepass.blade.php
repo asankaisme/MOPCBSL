@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    GP-AddItems
+    GP-Delete
 @endsection
 
 @section('body-content')
@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        Add items to gatepass
+                        Delete gatepass
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -101,15 +101,12 @@
                         <div class="row">
                             <div class="col">
                                 <hr style="border-color: rgb(202, 195, 250)">
-                                @if ($gatepass->verifiedBy != Auth::user()->id)
-                                    @if (count($gatepass->gatepassItem))
-                                        <a href="{{ route('gatepasses.verifyGatepass', $gatepass->id) }}"
-                                            class="btn btn-sm btn-success" style="float: right;">Verify</a>
-                                    @endif
-                                @endif
+                                @can('delete_gatepass')
+                                    <a href="{{ route('gatepasses.destroy', $gatepass->id) }}" class="btn btn-sm btn-danger"
+                                        style="float: right; margin-right: 5px;">Delete</a>
+                                @endcan
                                 <a href="{{ route('gatepasses.index') }}" class="btn btn-sm btn-outline-dark"
                                     style="float: right; margin-right: 5px;">Back</a>
-
                             </div>
                         </div>
                     </div>

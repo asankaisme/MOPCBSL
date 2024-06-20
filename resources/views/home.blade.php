@@ -14,11 +14,14 @@
                     </div>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">New <span class="badge badge-primary">{{ count($gatepassesNew) }}</span></li>
-                            <li class="list-group-item">Verified <span class="badge badge-warning">{{ count($gatepassesNew) }}</span></li>
-                            <li class="list-group-item">Approved</li>
+                            <li class="list-group-item">New <span
+                                    class="badge badge-primary" style="float: right;">{{ count($gatepassesNew) ?? '-' }}</span></li>
+                            <li class="list-group-item">Verified <span
+                                    class="badge badge-warning" style="float: right;">{{ count($gatepassesVerified) ?? '-' }}</span></li>
+                            <li class="list-group-item">Approved <span
+                                    class="badge badge-success" style="float: right;">{{ count($gatepassesApproved) ?? '-' }}</span></li>
                             <li class="list-group-item">Total</li>
-                          </ul>
+                        </ul>
                     </div>
                 </div>
             </div>
