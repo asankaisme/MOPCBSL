@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Lending;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Department extends Model
 {
@@ -13,4 +14,9 @@ class Department extends Model
         'depName',
         'isActive'
     ];
+
+    public function lendings()
+    {
+        return $this->hasMany(Lending::class);
+    }
 }

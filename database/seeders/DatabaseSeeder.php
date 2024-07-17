@@ -27,6 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DepartmentSeeder::class);
         $this->call(GatepassReasonSeeder::class);
         
-        Asset::factory(28)->create();
+        // Asset::factory(28)->create();
     }
 }

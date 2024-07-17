@@ -51,7 +51,7 @@
                                     Asset Lending
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Projectors & Other</a>
+                                    <a class="dropdown-item" href="{{ route('lendingAsset.index') }}">IT Assets</a>
                                 </div>
                             </li>
                         @endcan

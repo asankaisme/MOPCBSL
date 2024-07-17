@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GatepassController;
 use App\Http\Controllers\GatepassItemController;
+use App\Http\Controllers\LendingController;
 use App\Http\Controllers\MailController;
 use App\Models\GatepassItem;
 use Illuminate\Support\Facades\Route;
@@ -28,7 +29,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resources([
         'gatepasses' => GatepassController::class,
     ]);
-
+    // gatepass related routes listed below
     Route::get('/gatepasses/{gatepass}/show', [GatepassController::class, 'show'])->name('gatepasses.show');
     Route::get('/gatepasses/{gatepass}/verify', [GatepassController::class, 'viewGatepassToVerify'])->name('gatepasses.verify');
     Route::get('/gatepasses/{gatepass}/verifygp', [GatepassController::class, 'verifyGatepass'])->name('gatepasses.verifyGatepass');
@@ -37,12 +38,13 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/gatepasses/{gatepass}', [GatepassController::class, 'addItemsToGatepass'])->name('gatepasses.addItemsToGatepass');
     Route::get('/gatepasses/{gatepass}/viewBeforeDestroy', [GatepassController::class, 'viewBeforeDestroy'])->name('gatepasses.viewBeforeDestroy');
     Route::get('/gatepasses/{gatepass}/destroy', [GatepassController::class, 'destroy'])->name('gatepasses.destroy');
-
-
+    // specific routes related to gatepass are listed below
     Route::post('/gatepassItems/addGatepassItems/{gatepass}', [GatepassItemController::class, 'addGatepassItems'])->name('addGatepassItems');
     Route::get('/gatepassItems/deleteGatepassItem/{gatepassItem}', [GatepassItemController::class, 'deleteGatepassItem'])->name('deleteGatepassItem');
 
     // sending mails
     Route::get('/sendMail', [MailController::class, 'sendMail'])->name('sendMail');
 
+    // routes related to lending functionality
+    Route::get('/lendingAssets', [LendingController::class, 'index'])->name('lendingAsset.index');
 });

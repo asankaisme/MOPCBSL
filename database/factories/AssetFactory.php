@@ -21,8 +21,6 @@ class AssetFactory extends Factory
             'assetName' => fake()->name(),
             'faNo' =>fake()->randomNumber(),
             'serialNo' => fake()->randomNumber(),
-            'lendingDate' => fake()->date(),
-            'isReturned' => random_int(0,1),
             'remarks' =>fake()->streetName(),
         ];
     }

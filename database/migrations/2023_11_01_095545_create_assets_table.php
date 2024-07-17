@@ -18,10 +18,8 @@ return new class extends Migration
             $table->string('assetName')->nullable();
             $table->string('faNo')->nullable();
             $table->string('serialNo')->nullable();
-            $table->string('lendingDate')->nullable();
-            $table->boolean('isReturned')->nullable();
             $table->string('remarks')->nullable();
-            $table->tinyInteger('isActive')->nullable();
+            $table->integer('isActive')->nullable()->default(1);
         });
     }
 
