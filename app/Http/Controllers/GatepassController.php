@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use Carbon\Carbon;
 use App\Models\Gatepass;
 use Illuminate\Http\Request;
 use App\Models\GatepassReason;
+use PhpParser\Node\Stmt\TryCatch;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use DateTime;
+use App\Mail\GatepassVerify;
 use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Stmt\TryCatch;
+use Illuminate\Support\Facades\Mail;
 
 class GatepassController extends Controller
 {
@@ -100,6 +102,7 @@ class GatepassController extends Controller
             $gatepass->verifiedDate = Carbon::now()->format("Y-m-d");
             $gatepass->status = 'VRF';
             $gatepass->save();
+            Mail::to($gatepass->userCreated->email)->send(new GatepassVerify($gatepass));
             return redirect()->route('gatepasses.index')->with('msgSuccess', 'Gatepass is verified.');
         } catch (\Throwable $th) {
             throw $th;

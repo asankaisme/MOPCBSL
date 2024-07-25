@@ -16,85 +16,85 @@ class UserSeeder extends Seeder
     {
         User::factory()->create([
             'name' => 'itadminuser',
-            'email' => 'itadmin@cbsl.lk',
+            'email' => 'itadmin@myofficepal',
             'password' => Hash::make('test@1234'),
         ])->assignRole('Admin_Officer');
         // Anushka 
         User::factory()->create([
             'name' => 'Nishani EA',
-            'email' => 'anushkae@cbsl.lk',
+            'email' => 'anushkae@myofficepal',
             'password' => Hash::make('test@1234'),
         ])->assignRole('Admin_Officer');
         // Madhusika
         User::factory()->create([
             'name' => 'Madhusika',
-            'email' => 'madhusika@cbsl.lk',
+            'email' => 'madhusika@myofficepal',
             'password' => Hash::make('test@1234'),
         ])->assignRole('Admin_Officer');
         // Asanka
         User::factory()->create([
             'name' => 'Asanka',
-            'email' => 'asankacrk@cbsl.lk',
+            'email' => 'asankacrk@myofficepal',
             'password' => Hash::make('test@1234'),
         ])->assignRole('Admin_Officer');
 
         User::factory()->create([
             'name' => 'helpdeskuser',
-            'email' => 'helpdesk@cbsl.lk',
+            'email' => 'helpdesk@myofficepal',
             'password' => Hash::make('test@1234'),
         ])->assignRole('Helpdesk_Officer');
         // Viduranga
         User::factory()->create([
             'name' => 'Viduranga',
-            'email' => 'vidura@cbsl.lk',
+            'email' => 'vidura@myofficepal',
             'password' => Hash::make('test@1234'),
         ])->assignRole('Helpdesk_Officer');
         // Gayan
         User::factory()->create([
             'name' => 'Gayan',
-            'email' => 'gayan@cbsl.lk',
+            'email' => 'gayan@myofficepal',
             'password' => Hash::make('test@1234'),
         ])->assignRole('Helpdesk_Officer');
         // Kasturi
         User::factory()->create([
             'name' => 'Kasturi',
-            'email' => 'prabash@cbsl.lk',
+            'email' => 'prabash@myofficepal',
             'password' => Hash::make('test@1234'),
         ])->assignRole('Helpdesk_Officer');
         // Achini
         User::factory()->create([
             'name' => 'Achini',
-            'email' => 'achini@cbsl.lk',
+            'email' => 'achini@myofficepal',
             'password' => Hash::make('test@1234'),
         ])->assignRole('Helpdesk_Officer');
 
         User::factory()->create([
             'name' => 'tecuser',
-            'email' => 'tec@cbsl.lk',
+            'email' => 'tec@myofficepal',
             'password' => Hash::make('test@1234'),
         ])->assignRole('Technical_Officer');
             // sameera and jude
         User::factory()->create([
             'name' => 'Jude',
-            'email' => 'sameera.micronet@cbsl.lk',
+            'email' => 'sameera.micronet@myofficepal',
             'password' => Hash::make('test@1234'),
         ])->assignRole('Technical_Officer');
 
         User::factory()->create([
             'name' => 'guest',
-            'email' => 'guest@cbsl.lk',
+            'email' => 'guest@myofficepal',
             'password' => Hash::make('test@1234'),
         ])->assignRole('Guest');
 
         User::factory()->create([
             'name' => 'apruser',
-            'email' => 'approve@cbsl.lk',
+            'email' => 'approve@myofficepal',
             'password' => Hash::make('test@1234'),
         ])->assignRole('Approving_Officer');
 
         User::factory()->create([
             'name' => 'SuperAdminUser',
-            'email' => 'superadmin@cbsl.lk',
+            'email' => 'superadmin@myofficepal',
             'password' => Hash::make('test@1234'),
         ]);
     }

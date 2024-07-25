@@ -23,6 +23,10 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
+Route::get('/forgetPassword', function () {
+    return redirect()->route('password.request');
+});
+
 Route::middleware(['auth'])->group(function(){
     Route::get('/home', [DashboardController::class, 'displayDashboardInfo'])->name('home');
 
@@ -43,7 +47,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/gatepassItems/deleteGatepassItem/{gatepassItem}', [GatepassItemController::class, 'deleteGatepassItem'])->name('deleteGatepassItem');
 
     // sending mails
-    Route::get('/sendMail', [MailController::class, 'sendMail'])->name('sendMail');
+    Route::get('/sendWelcomemail', [MailController::class, 'sendWelcomeMail'])->name('sendWelcomemail');
 
     // routes related to lending functionality
     Route::get('/lendingAssets', [LendingController::class, 'index'])->name('lendingAsset.index');
