@@ -82,7 +82,7 @@
                                     Master Data
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Manage Users</a>
+                                    <a class="dropdown-item" href="{{ route('manageUsers') }}">Manage Users</a>
                                     <a class="dropdown-item" href="#">Roles & Permissions</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">Manage Assets</a>

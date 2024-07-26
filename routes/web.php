@@ -5,6 +5,7 @@ use App\Http\Controllers\GatepassController;
 use App\Http\Controllers\GatepassItemController;
 use App\Http\Controllers\LendingController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\UserController;
 use App\Models\GatepassItem;
 use Illuminate\Support\Facades\Route;
 
@@ -51,4 +52,8 @@ Route::middleware(['auth'])->group(function(){
 
     // routes related to lending functionality
     Route::get('/lendingAssets', [LendingController::class, 'index'])->name('lendingAsset.index');
+
+    // user management
+    Route::get('/manage-users',[UserController::class, 'index'])->name('manageUsers');
+    Route::get('/manage-user/edit-user/{user}', [UserController::class, 'edit'])->name('editUser');
 });

@@ -25,7 +25,7 @@
                                     value="{{ $gatepass->userCreated->name }}" readonly>
                             </div>
                             <div class="col-md-3 form-group">
-                                <label for="">Authorized By</label>
+                                <label for="">Verified By</label>
                                 <input type="text" class="form-control form-control-sm" name="authBy" required
                                     value="{{ $gatepass->userVerified->name ?? '-' }}" readonly>
                             </div>
