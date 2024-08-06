@@ -45,15 +45,23 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function gatepassCreatedBy(){
+    public function gatepassCreatedBy()
+    {
         return $this->hasMany(Gatepass::class, 'createdBy');
     }
 
-    public function gatepassVerifiedBy(){
+    public function gatepassVerifiedBy()
+    {
         return $this->hasMany(Gatepass::class, 'verifiedBy');
     }
 
-    public function gatepassAuthdBy(){
+    public function gatepassAuthdBy()
+    {
         return $this->hasMany(Gatepass::class, 'authBy');
+    }
+
+    public function cabVouchers()
+    {
+        return $this->hasMany(CabVoucher::class, 'requesterName');
     }
 }

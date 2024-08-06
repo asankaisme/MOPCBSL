@@ -59,7 +59,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Manage Requests
+                                    Make Requests
                                 </a>
                                 @can('view_visitorPermission')
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -69,7 +69,7 @@
                                         @can('view_visitorPermission')
                                             <a class="dropdown-item" href="#">Visitor Permission</a>
                                         @endcan
-
+                                        <a class="dropdown-item" href="{{ route('cabvouchers.index') }}">Cab Voucher</a>
                                     </div>
                                 @endcan
                             </li>

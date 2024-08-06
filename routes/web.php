@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\CabVoucherController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GatepassController;
 use App\Http\Controllers\GatepassItemController;
 use App\Http\Controllers\LendingController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
+use App\Models\CabVoucher;
 use App\Models\GatepassItem;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +35,7 @@ Route::middleware(['auth'])->group(function(){
 
     Route::resources([
         'gatepasses' => GatepassController::class,
+        'cabvouchers' => CabVoucherController::class,
     ]);
     // gatepass related routes listed below
     Route::get('/gatepasses/{gatepass}/show', [GatepassController::class, 'show'])->name('gatepasses.show');
