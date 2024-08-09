@@ -17,6 +17,7 @@
         </div>
         <div class="card-body">
             <p>{{ $message_content }}</p>
+            <p>Taxi Service Provider : {{ $cabVoucher->cv_provider }}</p>
             <p>This is a system generated message. Please do not reply!</p>
             <p>My Office Pal </p>
         </div>

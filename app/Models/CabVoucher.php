@@ -12,18 +12,23 @@ class CabVoucher extends Model
 
     public $fillable = [
         'requesterName',
+        'bank_id',
         'requestDate',
+        'cv_provider',
+        'cv_number',
         'cv_from',
         'cv_to',
         'cab_no',
         'vehicle_no',
         'amount',
         'remarks',
+        'status', // NEW,ISSEUD, RETURNED, USED, RECIEVED
         'isActive',
+        'issuedBy',
     ];
 
-    public function User()
+    public function UserRequested()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'requesterName');
     }
 }

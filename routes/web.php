@@ -46,9 +46,13 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/gatepasses/{gatepass}', [GatepassController::class, 'addItemsToGatepass'])->name('gatepasses.addItemsToGatepass');
     Route::get('/gatepasses/{gatepass}/viewBeforeDestroy', [GatepassController::class, 'viewBeforeDestroy'])->name('gatepasses.viewBeforeDestroy');
     Route::get('/gatepasses/{gatepass}/destroy', [GatepassController::class, 'destroy'])->name('gatepasses.destroy');
-    // specific routes related to gatepass are listed below
+    // specific routes related to gatepass controller
     Route::post('/gatepassItems/addGatepassItems/{gatepass}', [GatepassItemController::class, 'addGatepassItems'])->name('addGatepassItems');
     Route::get('/gatepassItems/deleteGatepassItem/{gatepassItem}', [GatepassItemController::class, 'deleteGatepassItem'])->name('deleteGatepassItem');
+
+    // specific routes of Cab voucher controler
+    Route::get('/cab-voucher/issue/{cabVoucher}', [CabVoucherController::class, 'issueCabVoucher'])->name('cabVoucher.issue');
+    Route::post('/cab-voucher/issue/storeCabVoucherNumber/{cabVoucher}', [CabVoucherController::class, 'storeCabVoucherNumber'])->name('cabVoucher.storeCabVoucherNumber');
 
     // sending mails
     Route::get('/sendWelcomemail', [MailController::class, 'sendWelcomeMail'])->name('sendWelcomemail');
