@@ -130,6 +130,8 @@ class CabVoucherController extends Controller
             ]);
             $cabVoucher->km_done = $validateddata['km_done'];
             $cabVoucher->amount = $validateddata['amount'];
+            $cabVoucher->cab_no = $request['cab_no'];
+            $cabVoucher->vehicle_no = $request['vehicle_no'];
             $cabVoucher->status = 'USED';
             $cabVoucher->save();
             return redirect()->route('cabvouchers.index')->with('msgSuccess', 'Cab voucher receipt sent.');

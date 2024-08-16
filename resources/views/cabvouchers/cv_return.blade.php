@@ -68,6 +68,14 @@
                                     <label for="">Amount/ LKR</label>
                                     <input type="text" class="form-control form-control-sm" name="amount">
                                 </div>
+                                <div class="col-md-3 form-group">
+                                    <label for="">Vehicle No:</label>
+                                    <input type="text" class="form-control form-control-sm" name="vehicle_no">
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <label for="">CAB No:</label>
+                                    <input type="text" class="form-control form-control-sm" name="cab_no">
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col">
