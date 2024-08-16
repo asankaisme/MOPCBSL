@@ -92,31 +92,51 @@ class CabVoucherController extends Controller
         }
     }
 
-    // Return cab voucher number
-    public function returnCabVoucher(CabVoucher $cabVoucher, Request $request)
+    /**
+     * Display the specified resource.
+     */
+    public function showCabVoucher(CabVoucher $cabVoucher)
+    {
+        return view('cabvouchers.cb_view', compact('cabVoucher'));
+    }
+
+    public function returnCabVoucher(CabVoucher $cabVoucher)
     {
         try {
-            $validatedRequest = $request->validate([
-                'cv_number' => 'required',
-            ]);
-            $cabVoucher->cv_number = $validatedRequest['cv_number'];
-            $cabVoucher->status = 'ISSUED';
-            $cabVoucher->issuedBy = Auth::user()->id;
+            $cabVoucher->status = 'RETURNED';
             $cabVoucher->save();
-            return redirect()->route('cabvouchers.index')->with('msgSuccess', 'Cab Voucher issued.');
+            return redirect()->route('cabvouchers.index')->with('msgSuccess', 'Cab voucher is returned.');
         } catch (\Throwable $th) {
             throw $th;
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function sendReceipt(CabVoucher $cabVoucher)
     {
-        //
+        try {
+            return view('cabvouchers.cv_return', compact('cabVoucher'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
+    // send your receipt to the admin division
+    public function sendReceiptCV(CabVoucher $cabVoucher, Request $request)
+    {
+        try {
+            $validateddata = $request->validate([
+                'km_done' => 'required',
+                'amount' => 'required|decimal:0,999999',
+            ]);
+            $cabVoucher->km_done = $validateddata['km_done'];
+            $cabVoucher->amount = $validateddata['amount'];
+            $cabVoucher->status = 'USED';
+            $cabVoucher->save();
+            return redirect()->route('cabvouchers.index')->with('msgSuccess', 'Cab voucher receipt sent.');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
     /**
      * Show the form for editing the specified resource.
      */

@@ -20,6 +20,7 @@ class CabVoucher extends Model
         'cv_to',
         'cab_no',
         'vehicle_no',
+        'km_done',
         'amount',
         'remarks',
         'status', // NEW,ISSEUD, RETURNED, USED, RECIEVED

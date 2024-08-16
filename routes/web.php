@@ -53,6 +53,11 @@ Route::middleware(['auth'])->group(function(){
     // specific routes of Cab voucher controler
     Route::get('/cab-voucher/issue/{cabVoucher}', [CabVoucherController::class, 'issueCabVoucher'])->name('cabVoucher.issue');
     Route::post('/cab-voucher/issue/storeCabVoucherNumber/{cabVoucher}', [CabVoucherController::class, 'storeCabVoucherNumber'])->name('cabVoucher.storeCabVoucherNumber');
+    Route::get('/cab-voucher/show/{cabVoucher}', [CabVoucherController::class, 'showCabVoucher'])->name('cabVoucher.show');
+    Route::get('/cab-voucher/return/{cabVoucher}', [CabVoucherController::class, 'returnCabVoucher'])->name('cabVoucher.return');
+    Route::get('/cab-voucher/sendReceipt/{cabVoucher}', [CabVoucherController::class, 'sendReceipt'])->name('cabVoucher.sendReceipt');
+    Route::post('/cab-voucher/sendReceiptCV/{cabVoucher}', [CabVoucherController::class, 'sendReceiptCV'])->name('cabVoucher.sendReceiptCV');
+
 
     // sending mails
     Route::get('/sendWelcomemail', [MailController::class, 'sendWelcomeMail'])->name('sendWelcomemail');

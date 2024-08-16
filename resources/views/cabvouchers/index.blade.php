@@ -62,7 +62,7 @@
                                         </td>
                                 @endif
                                 <td>
-                                    <a href="{{ route('cabVoucher.issue', $cabVoucher->id) }}" title="View"><i
+                                    <a href="{{ route('cabVoucher.show', $cabVoucher->id) }}" title="View"><i
                                             class="fa fa-newspaper-o" aria-hidden="true" style="color:black;"></i></a>
                                     @if ($cabVoucher->status == 'NEW')
                                         @can('issue_cabVouchers')
@@ -75,15 +75,16 @@
                                                 style="color:rgb(206, 24, 24);"></i></a>
                                     @endif
                                     @if ($cabVoucher->status == 'ISSUED')
-                                        <a href="#" title="Return"><i class="fa fa-arrow-left" aria-hidden="true"
-                                                style="color:rgb(206, 82, 24);"></i></a>
-                                        <a href="{{ route('gatepasses.approve', $cabVoucher->id) }}"
+                                        @if ($cabVoucher->ststus != 'RETURNED')
+                                            <a href="{{ route('cabVoucher.return', $cabVoucher->id) }}" title="Return"><i
+                                                    class="fa fa-arrow-left" aria-hidden="true"
+                                                    style="color:rgb(206, 82, 24);"></i></a>
+                                        @endif
+
+                                        <a href="{{ route('cabVoucher.sendReceipt', $cabVoucher->id) }}"
                                             title="Send Receipt"><i class="fa fa-paper-plane" aria-hidden="true"
                                                 style="color:rgb(0, 19, 128);"></i></a>
                                     @endif
-                                    {{-- <a href="{{ route('gatepasses.approve', $cabVoucher->id) }}" title="Send Receipt"><i
-                                            class="fa fa-paper-plane" aria-hidden="true"
-                                            style="color:rgb(0, 19, 128);"></i></a> --}}
                                 </td>
                                 </tr>
                                 @endforeach
