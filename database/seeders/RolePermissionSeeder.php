@@ -55,6 +55,14 @@ class RolePermissionSeeder extends Seeder
             'add_masterdata',
             'edit_masterdata',
             'delete_masterdata',
+            'view_users',
+            'add_users',
+            'edit_users',
+            'delete_users',
+            'view_permissions',
+            'add_permissions',
+            'edit_permissions',
+            'delete_permissions',
         ];
 
         //all permissions will be recorded in the db table
@@ -83,7 +91,7 @@ class RolePermissionSeeder extends Seeder
             'edit_gatepass',
             'delete_gatepass',
             'verify_gatepass',
-            // 'approve_gatepass',
+            'approve_gatepass',
             'issue_cabVouchers',
             'view_requestMenu',
             'view_visitorPermission',
@@ -97,6 +105,14 @@ class RolePermissionSeeder extends Seeder
             'view_masterdata',
             'add_masterdata',
             'edit_masterdata',
+            'view_users',
+            'add_users',
+            'edit_users',
+            'delete_users',
+            'view_permissions',
+            'add_permissions',
+            'edit_permissions',
+            'delete_permissions',
         ];
 
         foreach($adminOfficerPermissions as $permission){

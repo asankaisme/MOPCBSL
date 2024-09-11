@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('gatepass_items', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('gatepass_id')->constrained()->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('gatepass_id')->constrained()->onUpdate('cascade')->onDelete('NO ACTION');
             $table->string('itemName')->nullable();
             $table->string('serialNo')->nullable();
             $table->string('faNo')->nullable();

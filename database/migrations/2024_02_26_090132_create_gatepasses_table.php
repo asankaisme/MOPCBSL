@@ -28,9 +28,9 @@ return new class extends Migration
             $table->date('authDate')->nullable();
             $table->string('status', 8)->nullable(); //N-New,E-edited,A-approved,D-deleted
 
-            $table->foreign('createdBy')->references('id')->on('users')->constrained()->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('verifiedBy')->references('id')->on('users')->constrained()->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('authBy')->references('id')->on('users')->constrained()->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('createdBy')->references('id')->on('users')->constrained()->onUpdate('cascade')->onDelete('NO ACTION');
+            $table->foreign('verifiedBy')->references('id')->on('users')->constrained()->onUpdate('cascade')->onDelete('NO ACTION');
+            $table->foreign('authBy')->references('id')->on('users')->constrained()->onUpdate('cascade')->onDelete('NO ACTION');
         });
     }
 
