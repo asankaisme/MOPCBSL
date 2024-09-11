@@ -139,6 +139,17 @@ class CabVoucherController extends Controller
             throw $th;
         }
     }
+
+    // method for printing a cab voucher to send to FMD
+    public function printCV(CabVoucher $cabVoucher)
+    {
+        try {
+            return view('cabvouchers.cv_print', compact('cabVoucher'));
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

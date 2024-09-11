@@ -85,6 +85,9 @@
                                             title="Send Receipt"><i class="fa fa-paper-plane" aria-hidden="true"
                                                 style="color:rgb(0, 19, 128);"></i></a>
                                     @endif
+                                    @if ($cabVoucher->status == 'USED')
+                                        <a href="{{ route('printCV', $cabVoucher->id) }}" title="Print" target="_blank"><i class="fa fa-print"></i></a>
+                                    @endif
                                 </td>
                                 </tr>
                                 @endforeach

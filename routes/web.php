@@ -57,6 +57,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/cab-voucher/return/{cabVoucher}', [CabVoucherController::class, 'returnCabVoucher'])->name('cabVoucher.return');
     Route::get('/cab-voucher/sendReceipt/{cabVoucher}', [CabVoucherController::class, 'sendReceipt'])->name('cabVoucher.sendReceipt');
     Route::post('/cab-voucher/sendReceiptCV/{cabVoucher}', [CabVoucherController::class, 'sendReceiptCV'])->name('cabVoucher.sendReceiptCV');
+    Route::get('/cab-voucher/printCV/{cabVoucher}', [CabVoucherController::class, 'printCV'])->name('printCV');
 
 
     // sending mails
@@ -68,4 +69,5 @@ Route::middleware(['auth'])->group(function(){
     // user management
     Route::get('/manage-users',[UserController::class, 'index'])->name('manageUsers');
     Route::get('/manage-user/edit-user/{user}', [UserController::class, 'edit'])->name('editUser');
+    Route::post('/manage-users/edit-user/changeUserRole/{user}', [UserController::class, 'changeUserRole'])->name('changeUserRole');
 });
