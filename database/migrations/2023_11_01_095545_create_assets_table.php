@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('faNo')->nullable();
             $table->string('serialNo')->nullable();
             $table->string('remarks')->nullable();
-            $table->integer('isActive')->nullable()->default(1);
+            $table->tinyInteger('isActive')->nullable()->default(1);
         });
     }
 

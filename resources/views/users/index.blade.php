@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         Manage - Users
-                        @can('add_gatepass')
+                        @can('add_users')
                             <span style="float: right;">
                                 <a href="#" data-toggle="modal" data-target="#exampleModal"><img
                                         src="{{ asset('images/add-square-svgrepo-com.svg') }}" alt="add_icon" width="30px"
@@ -47,7 +47,8 @@
                                                 <span class="badge badge-pill badge-secondary">Deactive</span>
                                             @endif
                                         </td>
-                                        <td><a href="{{ route('editUser', $user->id) }}"><i class="fa fa-edit" title="Edit User"></i></a></td>
+                                        <td><a href="{{ route('editUser', $user->id) }}"><i class="fa fa-edit"
+                                                    title="Edit User"></i></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -58,25 +59,30 @@
         </div>
     </div>
     {{-- modal for user form --}}
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Users</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post">
+                        @csrf
+                        
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                </form>
             </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
     {{-- end modal --}}
 @endsection
 

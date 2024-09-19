@@ -14,26 +14,53 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
-            'name' => 'itadminuser',
-            'bank_id' => 9991,
-            'email' => 'itadmin@cbsl.lk',
-            'password' => Hash::make('test@1234'),
-        ])->assignRole('Admin_Officer');
-        // Anushka 
-        User::factory()->create([
-            'name' => 'Nishani EA',
-            'bank_id' => 3238,
-            'email' => 'anushkae@cbsl.lk',
-            'password' => Hash::make('test@1234'),
-        ])->assignRole('Admin_Officer');
-        // Madhusika
-        User::factory()->create([
-            'name' => 'Madhusika',
-            'bank_id' => 3272,
-            'email' => 'madhusika@cbsl.lk',
-            'password' => Hash::make('test@1234'),
-        ])->assignRole('Admin_Officer');
+        $users = [
+            ['name' => 'H M P B Herath', 'bank_id' =>    1852, 'email' => 'herath@cbsl.lk'],
+            ['name' => 'C. C. Gamage', 'bank_id' =>    1772, 'email' => 'chaturagamage@cbsl.lk'],
+            ['name' => 'H.S. Wickramasuriya', 'bank_id' =>    1720, 'email' => 'sulochane@cbsl.lk'],
+            ['name' => 'P.N. Dayaratne', 'bank_id' =>    1771, 'email' => 'prasangi@cbsl.lk'],
+            ['name' => 'K. R. Harischandra', 'bank_id' =>    1624, 'email' => 'ranjith@cbsl.lk'],
+            ['name' => 'N D Hewapathirana', 'bank_id' =>    1855, 'email' => 'nandun@cbsl.lk'],
+            ['name' => 'M. B. R. C. Boralugoda', 'bank_id' =>    1912, 'email' => 'rusiru@cbsl.lk'],
+            ['name' => 'D.A.I. Jayasinghe', 'bank_id' =>    1920, 'email' => 'indikaj@cbsl.lk'],
+            ['name' => 'C.L.R. Fernando', 'bank_id' =>    1922, 'email' => 'lasith@cbsl.lk'],
+            ['name' => 'MTBP Mallawa', 'bank_id' =>    1979, 'email' => 'bhagyam@cbsl.lk'],
+            ['name' => 'R.A.R.T  Rupasinghe', 'bank_id' =>    1999, 'email' => 'ruvindee@cbsl.lk'],
+            ['name' => 'M T B Ahamed', 'bank_id' =>    3055, 'email' => 'ahamed@cbsl.lk'],
+            ['name' => 'O.N.Priyanga', 'bank_id' =>    8014, 'email' => 'nadeesh@cbsl.lk'],
+            ['name' => 'C. R. Pathirana', 'bank_id' =>    3067, 'email' => 'roshanp@cbsl.lk'],
+            ['name' => 'R. Maldeni', 'bank_id' =>    8049, 'email' => 'rashmi@cbsl.lk'],
+            ['name' => 'M. S. Yatigala', 'bank_id' =>    3358, 'email' => 'minushi@cbsl.lk'],
+            ['name' => 'S.R. Wijesinghe', 'bank_id' =>    3161, 'email' => 'sajitha@cbsl.lk'],
+            ['name' => 'K A L L Sanjaya', 'bank_id' =>    3316, 'email' => 'lhrsanjaya@cbsl.lk'],
+            ['name' => 'J H M C B Jayaweera', 'bank_id' =>    3468, 'email' => 'bhanuka@cbsl.lk'],
+            ['name' => 'K. P. T. B. Koggalahewa', 'bank_id' =>    8137, 'email' => 'bilesh@cbsl.lk'],
+            ['name' => 'S.L. Dasanayake', 'bank_id' =>    8152, 'email' => 'slasith@cbsl.lk'],
+            ['name' => 'G H N Saranga', 'bank_id' =>    8165, 'email' => 'ghnsaranga@cbsl.lk'],
+            ['name' => 'N. H. A. P. Samaradiwakara', 'bank_id' =>    8171, 'email' => 'nipunas@cbsl.lk'],
+            ['name' => 'W A C Kalyana', 'bank_id' =>    3274, 'email' => 'kalyana@cbsl.lk'],
+            ['name' => 'M. K. S. D. Fernando', 'bank_id' =>    3309, 'email' => 'sameeradinesh@cbsl.lk'],
+            ['name' => 'E. A. Nishani', 'bank_id' =>    3238, 'email' => 'anushkae@cbsl.lk'],
+            ['name' => 'M.M Elpitiya', 'bank_id' =>    3272, 'email' => 'madhusika@cbsl.lk'],
+            ['name' => 'K. M. S. P. Kasturi', 'bank_id' =>    3209, 'email' => 'prabash@cbsl.lk'],
+            ['name' => 'G.A Wickramaratna', 'bank_id' =>    3210, 'email' => 'gayan@cbsl.lk'],
+            ['name' => 'M. K. P. L. Viduranga', 'bank_id' =>    3212, 'email' => 'vidura@cbsl.lk'],
+            ['name' => 'W.A.U Fernando', 'bank_id' =>    3213, 'email' => 'asiri@cbsl.lk'],
+            ['name' => 'B.G.A.L Balasooriya', 'bank_id' =>    3214, 'email' => 'achini@cbsl.lk'],
+            ['name' => 'P G N M Polpitigedara', 'bank_id' =>    3544, 'email' => 'nadeera@cbsl.lk'],
+            ['name' => 'G D R Perera', 'bank_id' =>    4580, 'email' => 'ranga@cbsl.lk'],
+            ['name' => 'U. W. N. N. Uyanwatta', 'bank_id' =>    4630, 'email' => 'uyanwatta@cbsl.lk'],
+
+        ];
+        foreach ($users as $user) {
+            User::factory()->create([
+                'name' => $user['name'],
+                'bank_id' => $user['bank_id'],
+                'email' => $user['email'],
+                'password' => Hash::make('test@1234'),
+            ])->assignRole('Guest');
+        }
+        
         // Asanka
         User::factory()->create([
             'name' => 'Asanka',
@@ -42,74 +69,5 @@ class UserSeeder extends Seeder
             'password' => Hash::make('test@1234'),
         ])->assignRole('Admin_Officer');
 
-        User::factory()->create([
-            'name' => 'helpdeskuser',
-            'bank_id' => 9992,
-            'email' => 'helpdesk@cbsl.lk',
-            'password' => Hash::make('test@1234'),
-        ])->assignRole('Helpdesk_Officer');
-        // Viduranga
-        User::factory()->create([
-            'name' => 'Viduranga',
-            'bank_id' => 3212,
-            'email' => 'vidura@cbsl.lk',
-            'password' => Hash::make('test@1234'),
-        ])->assignRole('Helpdesk_Officer');
-        // Gayan
-        User::factory()->create([
-            'name' => 'Gayan',
-            'bank_id' => 3210,
-            'email' => 'gayan@cbsl.lk',
-            'password' => Hash::make('test@1234'),
-        ])->assignRole('Helpdesk_Officer');
-        // Kasturi
-        User::factory()->create([
-            'name' => 'Kasturi',
-            'bank_id' => 3209,
-            'email' => 'prabash@cbsl.lk',
-            'password' => Hash::make('test@1234'),
-        ])->assignRole('Helpdesk_Officer');
-        // Achini
-        User::factory()->create([
-            'name' => 'Achini',
-            'bank_id' => 3214,
-            'email' => 'achini@cbsl.lk',
-            'password' => Hash::make('test@1234'),
-        ])->assignRole('Helpdesk_Officer');
-
-        User::factory()->create([
-            'name' => 'tecuser',
-            'bank_id' => 9993,
-            'email' => 'tec@cbsl.lk',
-            'password' => Hash::make('test@1234'),
-        ])->assignRole('Technical_Officer');
-            // sameera and jude
-        User::factory()->create([
-            'name' => 'Jude',
-            'bank_id' => 9994,
-            'email' => 'sameera.micronet@cbsl.lk',
-            'password' => Hash::make('test@1234'),
-        ])->assignRole('Technical_Officer');
-
-        User::factory()->create([
-            'name' => 'guest',
-            'bank_id' => 9995,
-            'email' => 'guest@cbsl.lk',
-            'password' => Hash::make('test@1234'),
-        ])->assignRole('Guest');
-
-        User::factory()->create([
-            'name' => 'apruser',
-            'bank_id' => 9996,
-            'email' => 'approve@cbsl.lk',
-            'password' => Hash::make('test@1234'),
-        ])->assignRole('Approving_Officer');
-
-        User::factory()->create([
-            'name' => 'SuperAdminUser',
-            'bank_id' => 9997,
-            'email' => 'superadmin@cbsl.lk',
-            'password' => Hash::make('test@1234'),
-        ]);
     }
 }

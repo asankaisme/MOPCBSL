@@ -48,6 +48,9 @@
         </thead>
     </table>
 </div>
-
+<div class="footer">
+    <hr>
+    <p style="text-align: center;">All rights reserved. ITD, CBSL</p>
+</div>
 
 @endsection

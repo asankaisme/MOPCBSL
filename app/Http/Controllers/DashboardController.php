@@ -25,6 +25,8 @@ class DashboardController extends Controller
         $cv_used = CabVoucher::where('status', 'USED')->get();
         $cv_total = CabVoucher::where('isActive', 1)->get();
 
+        $cv_total_sum = CabVoucher::where('status', 'USED')->sum('amount');
+
         return view('home', compact(
             'gatepassesNew',
             'gatepassesVerified',
@@ -33,7 +35,8 @@ class DashboardController extends Controller
             'cv_new',
             'cv_returned',
             'cv_used',
-            'cv_total'
+            'cv_total',
+            'cv_total_sum'
         ));
     }
 }

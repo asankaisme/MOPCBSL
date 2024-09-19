@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\CabVoucherIssue;
-use App\Models\CabVoucher;
 use Carbon\Carbon;
+use App\Models\User;
+use App\Models\CabVoucher;
 use Illuminate\Http\Request;
+use App\Mail\CabVoucherIssue;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
@@ -164,6 +165,18 @@ class CabVoucherController extends Controller
     public function update(Request $request, string $id)
     {
         //
+    }
+
+    // show history in a table as a summary
+    public function showCVHistory(User $user)
+    {
+        try {
+            $user_cabVouchers = $user->cabVouchers;
+            $user_total = $user_cabVouchers->where('status', 'USED')->sum('amount');
+            return view('cabvouchers.cv_user_history', compact('user_cabVouchers', 'user', 'user_total'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**

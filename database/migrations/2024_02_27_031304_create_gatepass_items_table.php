@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('faNo')->nullable();
             $table->string('qty')->nullable();
             $table->string('remarks')->nullable();
+            $table->tinyInteger('isActive')->default(1);
         });
     }
 

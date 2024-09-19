@@ -21,16 +21,16 @@ return new class extends Migration
             $table->date('validityDate')->nullable();
             $table->string('reason', 1)->nullable();
             $table->unsignedBigInteger('createdBy')->nullable();
+            $table->foreign('createdBy')->references('id')->on('users')->constrained()->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->date('createdDate')->nullable();
             $table->unsignedBigInteger('verifiedBy')->nullable();
+            $table->foreign('verifiedBy')->references('id')->on('users')->constrained()->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->date('verifiedDate')->nullable();
             $table->unsignedBigInteger('authBy')->nullable();
+            $table->foreign('authBy')->references('id')->on('users')->constrained()->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->date('authDate')->nullable();
             $table->string('status', 8)->nullable(); //N-New,E-edited,A-approved,D-deleted
-
-            $table->foreign('createdBy')->references('id')->on('users')->constrained()->onUpdate('cascade')->onDelete('NO ACTION');
-            $table->foreign('verifiedBy')->references('id')->on('users')->constrained()->onUpdate('cascade')->onDelete('NO ACTION');
-            $table->foreign('authBy')->references('id')->on('users')->constrained()->onUpdate('cascade')->onDelete('NO ACTION');
+            $table->tinyInteger('isActive')->default(1);
         });
     }
 

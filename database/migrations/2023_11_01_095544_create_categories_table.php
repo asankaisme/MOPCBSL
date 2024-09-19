@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('categoryName')->nullable();
-            $table->integer('isActive')->default(1);
+            $table->tinyInteger('isActive')->default(1);
         });
     }
 

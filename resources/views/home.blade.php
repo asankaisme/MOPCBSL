@@ -46,24 +46,24 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card">
-                    <div class="card-header">
-
-                    </div>
+                <div class="card" style="background-color: rgb(214, 214, 243);">
                     <div class="card-body">
-
+                      <h5 class="card-title">We have spent..</h5>
+                      <h4 class="card-subtitle mb-2" style="color:rgb(19, 19, 65);">LKR {{ $cv_total_sum == 0 ? '-' : number_format($cv_total_sum, 2)}}</h4>
+                      <p class="card-text">in total on cabs, to date.</p>
+                      <a href="#" class="card-link">More..</a>
                     </div>
-                </div>
+                  </div>
             </div>
             <div class="col-md-3">
-                <div class="card">
+                {{-- <div class="card">
                     <div class="card-header">
 
                     </div>
                     <div class="card-body">
 
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

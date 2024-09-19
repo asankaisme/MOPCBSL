@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('requesterName')->nullable();
+            $table->foreign('requesterName')->references('id')->on('users')->constrained()->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->integer('bank_id')->nullable();
             $table->date('requestDate')->nullable();
             $table->string('cv_provider')->nullable();
@@ -27,11 +28,9 @@ return new class extends Migration
             $table->decimal('amount')->nullable();
             $table->string('remarks')->nullable();
             $table->string('status')->nullable();
-            $table->integer('isActive')->nullable()->default(1);
+            $table->tinyInteger('isActive')->nullable()->default(1);
             $table->unsignedBigInteger('issuedBy')->nullable();
-            
-            $table->foreign('requesterName')->references('id')->on('users')->cascadeOnUpdate()->onDelete('NO ACTION');
-            $table->foreign('issuedBy')->references('id')->on('users')->cascadeOnUpdate()->onDelete('NO ACTION');
+            $table->foreign('issuedBy')->references('id')->on('users')->constrained()->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });
     }
 

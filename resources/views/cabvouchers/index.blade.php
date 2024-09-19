@@ -88,6 +88,7 @@
                                     @if ($cabVoucher->status == 'USED')
                                         <a href="{{ route('printCV', $cabVoucher->id) }}" title="Print" target="_blank"><i class="fa fa-print"></i></a>
                                     @endif
+                                    <a href="{{ route('showCVHistory', $cabVoucher->UserRequested->id) }}" title="History" target="_blank"><i class="fa fa-history" style="color: black;"></i></a>
                                 </td>
                                 </tr>
                                 @endforeach
