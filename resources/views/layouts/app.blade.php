@@ -18,7 +18,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffefc1">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="" alt="" srcset=""> My Office Pal</a>
+                <a class="navbar-brand" href="#"><img src="" alt="" srcset=""> My Office
+                    Pal</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -27,22 +28,25 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('home') }}">Dashboard <span
-                                    class="sr-only">(current)</span></a>
-                        </li>
+                        @can('view_dashboard')
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ route('home') }}">Dashboard <span
+                                        class="sr-only">(current)</span></a>
+                            </li>
+                        @endcan
+
                         @can('view_letters')
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Office Administration
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Letters & Memos</a>
-                                <a class="dropdown-item" href="#">Vehicle Pass</a>
-                                <a class="dropdown-item" href="#">Work Order Forms</a>
-                            </div>
-                        </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Office Administration
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Letters & Memos</a>
+                                    <a class="dropdown-item" href="#">Vehicle Pass</a>
+                                    <a class="dropdown-item" href="#">Work Order Forms</a>
+                                </div>
+                            </li>
                         @endcan
                         @can('view_assets')
                             <li class="nav-item dropdown">
@@ -106,7 +110,8 @@
                                     Logout
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    class="d-none">
                                     @csrf
                                 </form>
                             </div>

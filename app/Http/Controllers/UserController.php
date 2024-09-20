@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewUserAdded;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Mail\UserRoleChanged;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
@@ -50,6 +52,28 @@ class UserController extends Controller
             }
         } catch (\Throwable $th) {
             //throw $th;
+        }
+    }
+
+    // add a new user
+    public function addNewUser(Request $request)
+    {
+        try {
+            $validated_data = $request->validate([
+                'name' => 'required',
+                'email' => 'required|email|unique:users',
+            ]);
+            $newUser = new User();
+            $newUser->name = $validated_data['name'];
+            $newUser->email = $validated_data['email'];
+            $newUser->password = Hash::make('test@1234');
+            $newUser->isActive = 1;
+            $newUser->save();
+            $newUser->assignRole('Guest');
+            Mail::to($newUser->email)->send(new NewUserAdded($newUser));
+            return redirect()->route('manageUsers')->with('msgSuccess', 'New user added.');
+        } catch (\Throwable $th) {
+            throw $th;
         }
     }
 }

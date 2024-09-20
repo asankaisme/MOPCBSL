@@ -19,7 +19,10 @@
             <h3>{{ $subject }}</h3>
         </div>
         <div class="card-body">
-            <p>You role has been changed to : {{ $user->roles->first()->name }}</p>
+            <h3>Hi! {{ $user->name }}</h3>
+            <p>You have been added to the system as a "Guest" user.</p>
+            <p>You will be assigned a new role soon.</p>
+            <hr>
             <p>This is a system generated message. Please do not reply!</p>
             <p>My Office Pal </p>
         </div>

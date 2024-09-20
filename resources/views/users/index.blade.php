@@ -15,7 +15,7 @@
                             <span style="float: right;">
                                 <a href="#" data-toggle="modal" data-target="#exampleModal"><img
                                         src="{{ asset('images/add-square-svgrepo-com.svg') }}" alt="add_icon" width="30px"
-                                        height="30px" title="Make a request"></a>
+                                        height="30px" title="Add Users"></a>
                             </span>
                         @endcan
 
@@ -70,14 +70,24 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="post">
+                    <form action="{{ route('addNewUser') }}" method="post">
                         @csrf
-                        
-
+                        <div class="row">
+                            <div class="col form-group">
+                                <label for="name">Username</label>
+                                <input type="text" name="name" id="name" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col form-group">
+                                <label for="name">email</label>
+                                <input type="text" name="email" id="email" class="form-control form-control-sm">
+                            </div>
+                        </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <input type="reset" class="btn btn-secondary" data-dismiss="modal" value="Reset">
+                    <input type="submit" class="btn btn-primary" value="Add User">
                 </div>
                 </form>
             </div>

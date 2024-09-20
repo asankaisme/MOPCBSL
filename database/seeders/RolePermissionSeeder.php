@@ -63,6 +63,7 @@ class RolePermissionSeeder extends Seeder
             'add_permissions',
             'edit_permissions',
             'delete_permissions',
+            'view_dashboard',
         ];
 
         //all permissions will be recorded in the db table
@@ -79,6 +80,7 @@ class RolePermissionSeeder extends Seeder
         $adminOfficerRole = Role::create(['name' => 'Admin_Officer']);
 
         $adminOfficerPermissions = [
+            'view_dashboard',
             'view_letters',
             'add_letters',
             'edit_letters',
@@ -122,6 +124,7 @@ class RolePermissionSeeder extends Seeder
         $approveUserRole = Role::create(['name' => 'Approving_Officer']);
 
         $approveUserPermissions = [
+            'view_dashboard',
             'view_letters',
             'view_assets',
             'view_requestMenu',
@@ -142,6 +145,7 @@ class RolePermissionSeeder extends Seeder
         $helpdeskOfficerRole = Role::create(['name' => 'Helpdesk_Officer']);
 
         $helpdeskOfficerPermission = [
+            'view_dashboard',
             'view_letters',
             'add_letters',
             'edit_letters',
@@ -176,6 +180,7 @@ class RolePermissionSeeder extends Seeder
         $technicalOfficerRole = Role::create(['name' => 'Technical_Officer']);
 
         $technicalOfficerPermissions = [
+            'view_dashboard',
             'view_requestMenu',
             'view_gatepass',
             'add_gatepass',
@@ -198,17 +203,34 @@ class RolePermissionSeeder extends Seeder
         $guestUserRole = Role::create(['name' => 'Guest']);
 
         $guestUserPermissions = [
-            'view_letters',
-            'view_assets',
-            'view_requestMenu',
-            'view_gatepass',
-            'view_visitorPermission',
-            'view_repairLog',
-            'view_masterdata',
+            'view_dashboard',
         ];
 
         foreach ($guestUserPermissions as $permissions) {
             $guestUserRole->givePermissionTo($permission);
+        }
+
+        $standardUserRole = Role::create(['name' => 'Standard_User']);
+
+        $standardUserPermissions = [
+            'view_requestMenu',
+            'view_gatepass',
+            'add_gatepass',
+            'edit_gatepass',
+            'delete_gatepass',
+            'view_cabVouchers',
+            'add_cabVouchers',
+            'edit_cabVouchers',
+            'delete_cabVouchers',
+            'view_visitorPermission',
+            'add_visitorPermission',
+            'edit_visitorPermission',
+            'delete_visitorPermission',
+            'view_dashboard',
+        ];
+
+        foreach ($standardUserPermissions as $permissions) {
+            $standardUserRole->givePermissionTo($permission);
         }
     }
 }

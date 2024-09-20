@@ -72,4 +72,5 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/manage-users',[UserController::class, 'index'])->name('manageUsers');
     Route::get('/manage-user/edit-user/{user}', [UserController::class, 'edit'])->name('editUser');
     Route::post('/manage-users/edit-user/changeUserRole/{user}', [UserController::class, 'changeUserRole'])->name('changeUserRole');
+    Route::post('/manage-users/addNewUser', [UserController::class, 'addNewUser'])->name('addNewUser');
 });
