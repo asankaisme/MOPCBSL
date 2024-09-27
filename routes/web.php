@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActiviloggingController;
 use App\Http\Controllers\CabVoucherController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GatepassController;
@@ -7,8 +8,6 @@ use App\Http\Controllers\GatepassItemController;
 use App\Http\Controllers\LendingController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
-use App\Models\CabVoucher;
-use App\Models\GatepassItem;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -73,4 +72,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/manage-user/edit-user/{user}', [UserController::class, 'edit'])->name('editUser');
     Route::post('/manage-users/edit-user/changeUserRole/{user}', [UserController::class, 'changeUserRole'])->name('changeUserRole');
     Route::post('/manage-users/addNewUser', [UserController::class, 'addNewUser'])->name('addNewUser');
+
+    // activity log
+    Route::get('/activity-log/showActivites', [ActiviloggingController::class, 'showActivites'])->name('showActivites');
 });

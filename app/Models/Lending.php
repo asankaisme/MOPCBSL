@@ -12,12 +12,13 @@ class Lending extends Model
     use HasFactory;
 
     protected $fillable =[
-        'takenBy', //the person from the borrowing department
         'asset_id',
         'department_id',
         'lendingDate',
-        'returnedDate',
-        'isReturned',
+        'taken_by', //the person from the borrowing department
+        'issued_by', // the person who issued the asset to the requester
+        'returned_date',
+        'isReturned', // 0- No, 1-yes
         'remarks',
         'isActive',
     ];
@@ -30,5 +31,10 @@ class Lending extends Model
     public function department()
     {
         return $this->belongsTo(Department::class);
+    }
+
+    public function issuedBy()
+    {
+        return $this->belongsTo(User::class);
     }
 }

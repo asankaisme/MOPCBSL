@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class Gatepass extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     public $fillable = [
         'serialNo',
@@ -25,6 +27,13 @@ class Gatepass extends Model
         'status',
     ];
 
+    // this method logs all the changes caused in this model.
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()->logFillable();
+    }
+
+    // Eloquent relationships to other model classes are listed below.
     public function userCreated(){
         return $this->belongsTo(User::class, 'createdBy');
     }

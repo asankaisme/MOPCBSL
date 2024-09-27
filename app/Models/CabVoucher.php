@@ -5,12 +5,14 @@ namespace App\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class CabVoucher extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
-    public $fillable = [
+    protected $fillable = [
         'requesterName',
         'bank_id',
         'requestDate',
@@ -28,6 +30,13 @@ class CabVoucher extends Model
         'issuedBy',
     ];
 
+    // This method logs all the model activities
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()->logFillable();
+    }
+
+    // Eloquent relationships
     public function UserRequested()
     {
         return $this->belongsTo(User::class, 'requesterName');

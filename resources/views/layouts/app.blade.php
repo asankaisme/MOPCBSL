@@ -71,7 +71,7 @@
                                             <a class="dropdown-item" href="{{ route('gatepasses.index') }}">Gatepass</a>
                                         @endcan
                                         @can('view_visitorPermission')
-                                            <a class="dropdown-item" href="#">Visitor Permission</a>
+                                            {{-- <a class="dropdown-item" href="#">Visitor Permission</a> --}}
                                         @endcan
                                         <a class="dropdown-item" href="{{ route('cabvouchers.index') }}">Cab Voucher</a>
                                     </div>
