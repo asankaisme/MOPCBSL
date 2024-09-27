@@ -11,7 +11,7 @@ class ActiviloggingController extends Controller
     public function showActivites()
     {
         $activities = DB::table('activity_log')
-        ->orderBy('id', 'desc')
+        ->orderBy('updated_at', 'desc')
         ->get();
 
         return view('logs.index', compact('activities'));
