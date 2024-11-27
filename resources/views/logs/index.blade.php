@@ -29,8 +29,8 @@
                             <tbody>
                                 @foreach ($activities as $activity)
                                     <tr>
-                                        <td>{{ $counter++ }}</td>
-                                        <td>{{ $activity->description ?? '-' }}</td>
+                                        <td>{{ $activity->id }}</td>
+                                        <td>{{ $activity->description }}</td>
                                         <td>{{ $activity->subject_type }}</td>
                                         <td>{{ $activity->subject_id }}</td>
                                         <td>{{ $activity->causer_id }}</td>

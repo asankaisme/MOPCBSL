@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b8817fc8e90550d371cd98ed2473ffd6",
+    "content-hash": "10405c3d131a6d93c9c5b5747e0d8675",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -315,6 +315,7 @@
             "time": "2024-07-08T12:26:09+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "directorytree/ldaprecord",
             "version": "v3.7.1",
             "source": {
@@ -458,6 +459,8 @@
             "time": "2024-09-23T03:24:21+00:00"
         },
         {
+=======
+>>>>>>> 5338d9b2b4542ddc6d053ea1a76779c014062389
             "name": "doctrine/inflector",
             "version": "2.0.10",
             "source": {

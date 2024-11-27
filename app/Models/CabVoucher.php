@@ -12,6 +12,9 @@ class CabVoucher extends Model
 {
     use HasFactory, LogsActivity;
 
+    // Log only changed attributes
+    protected static $logOnlyDirty = true;
+
     protected $fillable = [
         'requesterName',
         'bank_id',
