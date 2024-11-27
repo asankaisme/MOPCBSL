@@ -58,6 +58,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/cab-voucher/sendReceiptCV/{cabVoucher}', [CabVoucherController::class, 'sendReceiptCV'])->name('cabVoucher.sendReceiptCV');
     Route::get('/cab-voucher/printCV/{cabVoucher}', [CabVoucherController::class, 'printCV'])->name('printCV');
     Route::get('/cab-voucher/showCVHistory/{user}', [CabVoucherController::class, 'showCVHistory'])->name('showCVHistory');
+    Route::get('/cab-voucher/delete/{cabVoucher}', [CabVoucherController::class, 'cvDelete'])->name('cabVoucher.delete');
 
 
 

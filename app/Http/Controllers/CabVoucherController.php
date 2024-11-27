@@ -182,8 +182,23 @@ class CabVoucherController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+
+    public function cvDelete(CabVoucher $cabVoucher)
     {
-        //
+        try {
+            return view('cabvouchers.cv_delete', compact('cabVoucher'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            CabVoucher::where('id', $id)->delete();
+            return redirect()->route('cabvouchers.index')->with('msgSuccess', 'Record is deleted');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

@@ -70,7 +70,7 @@
                                                     class="fa fa-check-circle" aria-hidden="true"
                                                     style="color:rgb(206, 157, 24);"></i></a>
                                         @endcan
-                                        <a href="{{ route('cabVoucher.issue', $cabVoucher->id) }}" title="Delete"><i
+                                        <a href="{{ route('cabVoucher.delete', $cabVoucher->id) }}" title="Delete"><i
                                                 class="fa fa-trash" aria-hidden="true"
                                                 style="color:rgb(206, 24, 24);"></i></a>
                                     @endif
