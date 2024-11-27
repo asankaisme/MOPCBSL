@@ -45,7 +45,7 @@ class GatepassController extends Controller
         $validatedData = $request->validate([
             'companyName' => 'required',
             'personName' => 'required',
-            'personNIC' => 'required',
+            'personNIC' => 'required|min:4|max:12',
             'validityDate' => 'required',
             'reason' => 'required',
         ]);

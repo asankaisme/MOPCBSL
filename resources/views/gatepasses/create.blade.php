@@ -19,17 +19,17 @@
                             <div class="row">
                                 <div class="col-md-10 form-group">
                                     <label for="">Company Name / Department</label>
-                                    <input type="text" class="form-control form-control-sm" name="companyName" required>
+                                    <input type="text" class="form-control form-control-sm" name="companyName" required value="{{ old('companyName') }}">
                                 </div>
                                 <div class="col-md-2 form-group">
                                     <label for="">Valid Until</label>
-                                    <input type="date" class="form-control form-control-sm" name="validityDate" required>
+                                    <input type="date" class="form-control form-control-sm" name="validityDate" required value="{{ old('validityDate') }}">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col form-group">
                                     <label for="">Name of the person</label>
-                                    <input type="text" class="form-control form-control-sm" name="personName" required>
+                                    <input type="text" class="form-control form-control-sm" name="personName" required value="{{ old('personName') }}">
                                 </div>
                                 <div class="col form-group">
                                     <label for="">NIC No / Bank ID</label>
@@ -60,20 +60,21 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12" style="margin-top: 10px;">
-                @include('includes.message')
-            </div>
-
-            <div class="col-md-12" style="margin-top: 10px;">
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
+            @if ($errors->any())
+                <div class="col-md-12" style="margin-top: 10px;">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Failed!</strong> {{ session('msgDanger') }}
                         @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                            <p>{{ $error }}</p>
                         @endforeach
-                    </ul>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                 </div>
             @endif
+            <div class="col-md-12" style="margin-top: 10px;">
+                @include('includes.message')
             </div>
         </div>
     </div>
