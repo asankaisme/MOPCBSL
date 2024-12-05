@@ -18,7 +18,7 @@
                         </span>
                     </div>
                     @php
-                        $counter;
+                        $counter = 1;
                     @endphp
                     <div class="card-body">
                         <table id="myTable" class="table tbl-sm table-striped table-hover">
@@ -28,7 +28,7 @@
                                 <th>Department</th>
                                 <th>Lending Date</th>
                                 <th>Returned date</th>
-                                <th>Status</th>
+                                <th>Taken by</th>
                                 <th></th>
                             </thead>
                             <tbody>
@@ -39,11 +39,14 @@
                                         <td>{{ $lending->department->depName }}</td>
                                         <td>{{ $lending->lendingDate }}</td>
                                         <td>{{ $lending->returnedDate }}</td>
+                                        <td>{{ $lending->taken_by }}</td>
+                                        <td></td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        {{-- modal --}}
+                        
+                        {{-- modal for asset lending form --}}
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -55,34 +58,44 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="#" method="POST">
+                                        <form action="{{ route('lendings.store') }}" method="POST">
                                             @csrf
                                             <div class="row">
                                                 <div class="col form-group">
                                                     <label for="">Item Name</label>
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        name="itemName" id="itemName">
+                                                    <select name="asset_id" id="asset_id"
+                                                        class="form-control form-control-sm">
+                                                        <option value="null">-Select an item-</option>
+                                                        @foreach ($available_assets as $asset)
+                                                            <option value="{{ $asset->id }}">{{ $asset->assetName }} -
+                                                                {{ $asset->faNo }}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col form-group">
-                                                    <label for="serialNo">Serial Number</label>
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        name="serialNo" id="serialNo" placeholder="If available">
+                                                    <label for="department_id">Department</label>
+                                                    <select name="department_id" id="department_id"
+                                                        class="form-control form-control-sm">
+                                                        <option value="null">-Select an item-</option>
+                                                        @foreach ($departments as $department)
+                                                            <option value="{{ $department->id }}">{{ $department->depName }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="col form-group">
+                                                    <label for="lendingDate">Issued On</label>
+                                                    <input type="date" name="lendingDate" id="lendingDate"
+                                                        class="form-control form-control-sm">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col form-group">
-                                                    <label for="faNo">Fixed Asset (FA) Number</label>
+                                                    <label for="taken_by">Issued To</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        name="faNo" id="faNo" placeholder="If available">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col form-group">
-                                                    <label for="qty">Quantity</label>
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        name="qty" id="qty" placeholder="If available">
+                                                        name="taken_by" id="taken_by" placeholder="Name of the person">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -94,9 +107,9 @@
                                             </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary btn-sm"
+                                        <button type="reset" class="btn btn-secondary btn-sm"
                                             data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary btn-sm">Add</button>
+                                        <button type="submit" class="btn btn-primary btn-sm">Issue</button>
                                     </div>
                                     </form>
                                 </div>
@@ -105,6 +118,9 @@
                         {{-- end of modal --}}
                     </div>
                 </div>
+            </div>
+            <div class="col-md-12" style="margin-top: 10px;">
+                @include('includes.message')
             </div>
         </div>
     </div>

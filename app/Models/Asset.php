@@ -11,7 +11,7 @@ class Asset extends Model
 {
     use HasFactory, LogsActivity;
 
-    protected $fillable =[
+    protected $fillable = [
         'category_id',
         'assetName',
         'faNo',

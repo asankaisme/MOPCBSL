@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActiviloggingController;
+use App\Http\Controllers\AssetController;
 use App\Http\Controllers\CabVoucherController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GatepassController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\GatepassItemController;
 use App\Http\Controllers\LendingController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
+use App\Models\Asset;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +37,8 @@ Route::middleware(['auth'])->group(function(){
     Route::resources([
         'gatepasses' => GatepassController::class,
         'cabvouchers' => CabVoucherController::class,
+        'assets' => AssetController::class,
+        'lendings' => LendingController::class,
     ]);
     // gatepass related routes listed below
     Route::get('/gatepasses/{gatepass}/show', [GatepassController::class, 'show'])->name('gatepasses.show');
@@ -60,6 +64,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/cab-voucher/showCVHistory/{user}', [CabVoucherController::class, 'showCVHistory'])->name('showCVHistory');
     Route::get('/cab-voucher/delete/{cabVoucher}', [CabVoucherController::class, 'cvDelete'])->name('cabVoucher.delete');
 
+    // Assets related routes
+    //Route::get();
 
 
     // sending mails
