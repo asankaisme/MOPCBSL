@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Asset;
 use App\Models\Lending;
 use App\Models\Department;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -22,8 +23,8 @@ class LendingController extends Controller
             $available_assets = DB::table('assets')
                 ->leftJoin('lendings', 'assets.id', '=', 'lendings.asset_id')
                 ->select('assets.*')
-                ->where('lendings.isReturned', '=', 1)
-                ->orWhere('lendings.isReturned', '=', null)
+                ->where('lendings.status', '!=', 'On Lending')
+                ->orWhere('lendings.status', '=', null)
                 ->get();
 
             $departments = Department::where('isActive', 1)->get();
@@ -61,11 +62,27 @@ class LendingController extends Controller
             $lendingRequest->lendingDate = $validatedRequest['lendingDate'];
             $lendingRequest->taken_by = $validatedRequest['taken_by'];
             $lendingRequest->issued_by = Auth::user()->id;
-            $lendingRequest->isReturned = 0;
+            $lendingRequest->remarks = $request->remarks;
+            $lendingRequest->status = 'On Lending';
             $lendingRequest->isActive = 1;
             $lendingRequest->save();
-            echo 'yes';
+            // echo 'yes';
             return redirect()->route('lendingAsset.index')->with('msgSuccess', 'This item is issued successfully.');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    // method to mark the asset as returned
+    public function returnAsset(Request $request)
+    {
+        try {
+            $lending = Lending::find($request->id);
+            $lending->returned_date = Carbon::now();
+            $lending->status = 'Returned';
+            $lending->save();
+
+            return redirect()->route('lendingAsset.index')->with('msgSuccess', 'This item is returned successfully.');
         } catch (\Throwable $th) {
             throw $th;
         }

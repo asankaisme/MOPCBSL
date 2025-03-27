@@ -25,10 +25,12 @@
                             <thead>
                                 <th>#</th>
                                 <th>Asset Name</th>
+                                <th>FA No</th>
                                 <th>Department</th>
-                                <th>Lending Date</th>
-                                <th>Returned date</th>
                                 <th>Taken by</th>
+                                <th>Lending Date</th>
+                                <th>Status</th>
+                                <th>Issued By</th>
                                 <th></th>
                             </thead>
                             <tbody>
@@ -36,16 +38,30 @@
                                     <tr>
                                         <td>{{ $counter++ }}</td>
                                         <td>{{ $lending->asset->assetName }}</td>
+                                        <td>{{ $lending->asset->faNo }}</td>
                                         <td>{{ $lending->department->depName }}</td>
-                                        <td>{{ $lending->lendingDate }}</td>
-                                        <td>{{ $lending->returnedDate }}</td>
                                         <td>{{ $lending->taken_by }}</td>
-                                        <td></td>
+                                        <td>{{ $lending->lendingDate }}</td>
+                                        <td>
+                                            @if ($lending->returned_date != null)
+                                                {{ $lending->returned_date }}
+                                            @else
+                                                <span class="badge badge-info">On Lending</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ $lending->issuedBy->name }}</td>
+                                        <td>
+                                            
+                                            @if ($lending->status == 'On Lending')
+                                                <a href="{{ route('lendingAsset.returnAsset', $lending->id) }}" title="Mark as returned" style="color: green;"><i
+                                                        class="fa fa-check"></i></a>
+                                            @endif
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        
+
                         {{-- modal for asset lending form --}}
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -65,7 +81,7 @@
                                                     <label for="">Item Name</label>
                                                     <select name="asset_id" id="asset_id"
                                                         class="form-control form-control-sm">
-                                                        <option value="null">-Select an item-</option>
+                                                        <option value="">-Select an item-</option>
                                                         @foreach ($available_assets as $asset)
                                                             <option value="{{ $asset->id }}">{{ $asset->assetName }} -
                                                                 {{ $asset->faNo }}</option>
@@ -80,7 +96,8 @@
                                                         class="form-control form-control-sm">
                                                         <option value="null">-Select an item-</option>
                                                         @foreach ($departments as $department)
-                                                            <option value="{{ $department->id }}">{{ $department->depName }}
+                                                            <option value="{{ $department->id }}">
+                                                                {{ $department->depName }}
                                                             </option>
                                                         @endforeach
                                                     </select>

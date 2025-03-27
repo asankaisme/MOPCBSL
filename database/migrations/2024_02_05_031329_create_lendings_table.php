@@ -21,7 +21,8 @@ return new class extends Migration
             $table->unsignedBigInteger('issued_by')->nullable();
             $table->foreign('issued_by')->references('id')->on('users')->constrained()->onUpdate('cascade')->onDelete('NO ACTION');
             $table->date('returned_date')->nullable();
-            $table->tinyInteger('isReturned')->nullable();
+            // $table->tinyInteger('isReturned')->nullable();
+            $table->string('status')->nullable();
             $table->string('remarks')->nullable();
             $table->tinyInteger('isActive')->default(1);
         });

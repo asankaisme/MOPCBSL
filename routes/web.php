@@ -73,6 +73,7 @@ Route::middleware(['auth'])->group(function(){
 
     // routes related to lending functionality
     Route::get('/lendingAssets', [LendingController::class, 'index'])->name('lendingAsset.index');
+    Route::get('/lendingAssets/returnAsset/{id}', [LendingController::class, 'returnAsset'])->name('lendingAsset.returnAsset');
 
     // user management
     Route::get('/manage-users',[UserController::class, 'index'])->name('manageUsers');

@@ -24,7 +24,7 @@
                         $counter = 1;
                     @endphp
                     <div class="card-body">
-                        <table id="myTable" class="table tbl-sm table-striped table-hover">
+                        <table id="myTable" class="table tbl-sm table-striped table-hover" style="font-size: 14px;">
                             <thead>
                                 <th>#</th>
                                 <th>Voucher No</th>

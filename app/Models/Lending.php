@@ -18,7 +18,8 @@ class Lending extends Model
         'taken_by', //the person from the borrowing department
         'issued_by', // the person who issued the asset to the requester
         'returned_date',
-        'isReturned', // 0- No, 1-yes
+        // 'isReturned', // 0- No, 1-yes
+        'status',   // On lending, Returned,
         'remarks',
         'isActive',
     ];
@@ -35,6 +36,6 @@ class Lending extends Model
 
     public function issuedBy()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'issued_by');
     }
 }
